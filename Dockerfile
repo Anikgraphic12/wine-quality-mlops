@@ -7,13 +7,12 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copie du code source
-COPY train.py .
-COPY app.py .
-COPY winequalityN.csv .
+COPY app/main.py .
+COPY model.pkl .
 
 # Entraînement du modèle au moment du build
 RUN python train.py
 
 EXPOSE 8000
 
-CMD ["python", "app.py"]
+CMD ["python", "app/main.py"]
